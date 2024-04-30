@@ -15,13 +15,13 @@ if %temp0%==%temp1% goto withoutPath
 if not x%temp1:\=%==x%temp1% (goto withPath) else (goto withoutPath)
 
 :help
-echo Usage: count_files.bat [directory_path] [/H] [/R] [/A]
+echo Usage patterns:([] - obligatory argument, {} - not obligatory) 
+echo {Path} {hidden} {read-only} {archive}
 echo.
 echo Parameters:
-echo   [directory_path] - the path to the directory for which the file count is needed.
-echo   /H - count hidden files.
-echo   /R - count read-only files.
-echo   /A - count archive files.
+echo   hidden - count hidden files.
+echo   read-only - count read-only files.
+echo   archive - count archive files.
 shift
 goto end2
 
@@ -35,7 +35,7 @@ goto withPathLoop
 
 :withoutPath
 set /P folderpath="Enter the path: "
-if "%folderpath%" == "" set folderpath="C:\Test\Labs"
+if "%folderpath%" == "" set folderpath="C:\Lab3"
 :withoutPathLoop
 if "%1" == "" goto end
 set arg=%arg%%1
